@@ -1,0 +1,44 @@
+@media screen and (min-width:1024px) {
+    .container {
+    ul {
+        margin-left: 32px;
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        height: auto;
+        left: auto;
+        margin: initial;
+        margin-left: 2rem;
+        min-height: 40px;
+        pointer-events: all;
+        position: relative;
+        top: auto;
+        width: auto;
+        list-style-type: none;
+
+        li {
+            // font-size: 18px;mobile
+            font-size: 1.2vw;
+            text-shadow: 2px 2px 2px #14141473;
+            margin: 0 12px;
+
+            a {
+                text-decoration: none;
+                color: #e5e5e5;
+                cursor: pointer;
+                font-weight: 400;
+                text-decoration: none;
+                transition: color .2s ease-in-out;
+                will-change: font-weight;
+            }
+        }
+
+
+    }
+    .header-discover{
+        display: none;
+    }
+}
+
+        
+}

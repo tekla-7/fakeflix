@@ -1,0 +1,95 @@
+@import "./style/desktop";
+@import "./style/tablet";
+@import "./style/mobile";
+.container {
+    align-items: center;
+    background-image: linear-gradient(180deg, #000000b3 10%, #0000);
+    box-sizing: border-box;
+    display: flex;
+    height: 70px;
+    justify-content: flex-start;
+    padding: 0 4vw;
+    position: fixed;
+    top: 0;
+    transition: all .2s ease-out;
+    width: 100%;
+    z-index: 10;
+    position: relative;
+
+    .header-logo {
+
+        img {
+            max-width: 130px;
+        }
+    }
+
+   
+    .header-profile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: absolute;
+        right: 4vw;
+
+        .search {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            .searchbar {
+
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin-right: 2rem;
+
+                .searchbar-search {
+                    top: 50%;
+                    transform: translateY(-50%);
+                    position: absolute;
+                    right: 3.5rem;
+                    overflow: hidden;
+                    background-color: #14141440;
+                    border: 1px solid #f2f2f2;
+                    border-radius: 6px;
+                    color: #f2f2f2;
+                    font-size: 12px;
+                    // opacity: 0;
+                    outline: none;
+                    padding: 7px 30px 7px 7px;
+                    transition: all .2s ease-out;
+                    // width: 0;
+                    width: 200px;
+
+                    svg {
+                        height: 1.5rem;
+                        width: 1.5rem;
+                    }
+                }
+            }
+        }
+
+        .header_profile {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            .header_profile-avatar {
+                max-width: 40px;
+                margin-right: 8px;
+                height: 100%;
+                // max-width: 30px;
+                width: 100%;
+            }
+        }
+    }
+
+    .false {
+        display: none;
+        width: 0;
+    }
+}

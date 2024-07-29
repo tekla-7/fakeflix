@@ -1,0 +1,33 @@
+@media screen and (max-width:767px) {
+    .container {
+        .auth-logo {
+            padding: 2em;
+
+            .auth-logo-img {
+                max-width: 160px;
+                width: 100%;
+            }
+        }
+
+        .auth-content {
+          
+            padding: 2em 1.8em;
+            width: 100%;
+            max-width: 90%;
+
+        }
+
+        .signin-input-wrapper {
+            margin: 1em 0;
+        }
+
+        .submit-button {
+            margin-top: 2em;
+        }
+
+        .signin-button {
+            min-height: 45px;
+        }
+    }
+
+}

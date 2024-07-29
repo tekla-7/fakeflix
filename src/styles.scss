@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+::ng-deep * {
+      
+    margin-top: 0;
+    padding-top: 0;
+ }
+ body{
+    margin-top: 0;
+    padding-top: 0;
+     background-color: #EAEEF4;
+ }
+ @import './app/shared/reset';
+ @import './app/shared/shared';
+ @import './app/shared/media-queries';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
