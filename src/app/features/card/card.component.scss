@@ -1,0 +1,22 @@
+.card{
+    color: red;
+    z-index: 2;
+    display: inline-flex;
+    transform: scale(1);
+    transition: transform .3s ease-out, opacity .3s ease-out;
+    
+    height: 100%;
+    cursor: pointer;
+    margin-right: 8px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 6px;
+    img{
+        border-radius: 6px;
+        width: 22.26vw;
+        // width: 23.01vw;
+        // min-width: 228.25px;
+        max-width: 317.16px;
+        height: 100%;
+    }
+}
