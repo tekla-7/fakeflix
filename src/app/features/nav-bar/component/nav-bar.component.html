@@ -1,11 +1,13 @@
-<div class="container">
+<div class="header-container">
   <div class="header-logo">
-    <a href="/"
-      ><img
-        class="Navbar__logo"
+    <a href="/">
+      <img
+        class="Navbar__logo tablet"
         src="https://cdn.jsdelivr.net/gh/Th3Wall/assets-cdn/Fakeflix/Fakeflix_logo.png"
-        alt=""
-    /></a>
+        alt=""/>
+      <img class="Navbar__logo mobile " src="https://cdn.jsdelivr.net/gh/Th3Wall/assets-cdn/Fakeflix/Fakeflix_favicon_192.png" style="width: 40px;height: 40px;" >
+  </a>
+
   </div>
   <div class="header-discover " (click)="showMenu()">
     <span class="Navbar__navlinks--link" >Discover</span
@@ -90,8 +92,8 @@
         </div> -->
       </div>
     </div>
-    <div class="profile">
-      <div class="header_profile">
+    <div class="profile" >
+      <div class="header_profile" (click)="showdropdown()">
         <img
           class="header_profile-avatar header_profile-toggler"
           src="https://cdn.jsdelivr.net/gh/Th3Wall/assets-cdn/Fakeflix/Fakeflix_profilepic.png"
@@ -113,6 +115,8 @@
         </svg>
         <div class="Navbar__navprofile--content"></div>
       </div>
+     
+      <div class="sign-out"  [@signOut]="showSignOut ? 'expanded' : 'collapsed'" (click)="showdropdown()" routerLink="">Sign Out</div>
     </div>
   </div>
 </div>

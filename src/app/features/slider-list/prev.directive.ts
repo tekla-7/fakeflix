@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
-import { SharedDataService } from './shared/shared-data.service';
+// import { SharedDataService } from './shared/shared-data.service';
 
 @Directive({
   selector: '[appPrev]'
@@ -36,7 +36,6 @@ export class PrevDirective {
 
     }
     // this.sharedDataService.setPositionX(this.positionX)
-    console.log("next button position x " +  this.positionX)
     this.sliderItem.style.transform = `translate3d(${this.positionX}px, 0px, 0px)`;
     this.sliderItem.style.transitionDuration = '300ms';
   }
@@ -57,7 +56,7 @@ export class PrevDirective {
       this.EementRef.nativeElement.parentElement.children[2].children[0];
     const inlineTransform = element.style.transform;
    this.positionX=+inlineTransform.match(/translate3d\((-?\d+px),\s*(-?\d+px),\s*(-?\d+px)\)/)[1].match(/(-?\d+)px/)[1]
-   console.log("rhisss isss   eeeee" , +this.positionX)
+   
     
   }
   // @HostListener('window:resize', ['$event'])

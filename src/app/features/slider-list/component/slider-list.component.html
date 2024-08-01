@@ -1,123 +1,84 @@
 <div class="slider-container">
-  <div class="slider-header-wrapper">
-    <div class="title">
-      <span>Trending Now</span>
-      <span class="showmore">
-        Show all
-        <svg
-          stroke="currentColor"
-          fill="none"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          height="1em"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </span>
-    </div>
-    <div class="slider-pagination slider-pagination-dots">
-      <ng-container *ngFor="let dot of dotList ,let i=index" >
-        <span
-        class="slider-pagination-dot" [ngClass]="{ 'slider-pagination-dot-active': currentActiveDot==i}"
-      ></span>
-      </ng-container>
+ <ng-container *ngFor="let ele of array; let i = index">
+  <div class="row">
+    <div class="slider-header-wrapper">
+      <div class="title">
+        <span class="title-element">{{ele.title}}</span>
+        <span class="showmore">
+          Show all
+          <svg
+            stroke="currentColor"
+            fill="none"
+            stroke-width="2"
+            viewBox="0 -5 24 24"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </span>
+      </div>
+      <div class="slider-pagination slider-pagination-dots">
+        <ng-container *ngFor="let dot of dotList; let i = index">
+          <span class="slider-pagination-dot"></span>
+          <!-- [ngClass]="{ 'slider-pagination-dot-active': currentActiveDot==i}" -->
+        </ng-container>
         <!-- <span
           class="slider-pagination-dot slider-pagination-dot-active"
         ></span> -->
       </div>
-  </div>
-  <div class="slider-wrapper">
-    <div class="Row__slider--mask left" appPrev >
-      <svg
-        stroke="currentColor"
-        fill="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        class="Row__slider--mask-icon left"
-        height="3em"
-        width="3em"
-        xmlns="http://www.w3.org/2000/svg"
-        style="color: white"
-      >
-        <path fill="none" d="M0 0h24v24H0z"></path>
-        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
-      </svg>
     </div>
-    <div class="Row__slider--mask right" appNext >
-      <svg
-        stroke="currentColor"
-        fill="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        class="Row__slider--mask-icon right"
-        height="3em"
-        width="3em"
-        xmlns="http://www.w3.org/2000/svg"
-        style="color: white"
-      >
-        <path fill="none" d="M0 0h24v24H0z"></path>
-        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
-      </svg>
-    </div>
-    <div class="slider" >
-      <!-- style="transform: translate3d(positionX, 0px, 0px);transition-duration: 0ms;" -->
-      <div class="slider-item-list" style="transform: translate3d(0px, 0px, 0px); transition-duration: 300ms;">
-        <ng-container *ngFor="let movie of movieList ,let i=index" >
-          <app-card [movie]="movie"></app-card>
-
-        </ng-container>
+    <div class="slider-wrapper">
+      <div class="Row__slider--mask left" appPrev>
+        <svg
+          stroke="currentColor"
+          fill="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          class="Row__slider--mask-icon left"
+          height="3em"
+          width="3em"
+          xmlns="http://www.w3.org/2000/svg"
+          style="color: white"
+        >
+          <path fill="none" d="M0 0h24v24H0z"></path>
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+        </svg>
+      </div>
+      <div class="Row__slider--mask right" appNext>
+        <svg
+          stroke="currentColor"
+          fill="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          class="Row__slider--mask-icon right"
+          height="3em"
+          width="3em"
+          xmlns="http://www.w3.org/2000/svg"
+          style="color: white"
+        >
+          <path fill="none" d="M0 0h24v24H0z"></path>
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+        </svg>
+      </div>
+      <div class="slider">
+        <!-- style="transform: translate3d(positionX, 0px, 0px);transition-duration: 0ms;" -->
+        <div
+          class="slider-item-list"
+          [ngStyle]="{
+            transform: 'translate3d(' + positionX + 'px, 0px, 0px)',
+            'transition-duration': '300ms'
+          }"
+        >
+          <ng-container *ngFor="let movie of ele.array; let i = index">
+            <app-card [movie]="movie"></app-card>
+          </ng-container>
+        </div>
       </div>
     </div>
   </div>
-  <div class="slider-wrapper">
-    <div class="Row__slider--mask left" appPrev >
-      <svg
-        stroke="currentColor"
-        fill="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        class="Row__slider--mask-icon left"
-        height="3em"
-        width="3em"
-        xmlns="http://www.w3.org/2000/svg"
-        style="color: white"
-      >
-        <path fill="none" d="M0 0h24v24H0z"></path>
-        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
-      </svg>
-    </div>
-    <div class="Row__slider--mask right" appNext>
-      <svg
-        stroke="currentColor"
-        fill="currentColor"
-        stroke-width="0"
-        viewBox="0 0 24 24"
-        class="Row__slider--mask-icon right"
-        height="3em"
-        width="3em"
-        xmlns="http://www.w3.org/2000/svg"
-        style="color: white"
-      >
-        <path fill="none" d="M0 0h24v24H0z"></path>
-        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
-      </svg>
-    </div>
-    <div class="slider">
-      <!-- style="transform: translate3d(positionX, 0px, 0px);transition-duration: 0ms;" -->
-      <div class="slider-item-list" [ngStyle]="{
-        'transform': 'translate3d(' + positionX + 'px, 0px, 0px)',
-        'transition-duration': '300ms'
-      }"
-  >
-        <ng-container *ngFor="let movie of movieList ,let i=index" >
-          <app-card [movie]="movie"></app-card>
-
-        </ng-container>
-      </div>
-    </div>
-  </div>
+</ng-container>
 </div>

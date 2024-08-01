@@ -6,8 +6,7 @@ import {
   Output,
   Renderer2,
 } from '@angular/core';
-import { SharedDataService } from './shared/shared-data.service';
-import { EventEmitter } from 'stream';
+//
 import { style } from '@angular/animations';
 
 @Directive({
@@ -30,15 +29,16 @@ export class NextDirective {
   nextFunc() {
     this.readStyles()
     this.slider = this.EementRef.nativeElement.parentElement.children[2]; //slider
+    let padding=window.getComputedStyle(this.slider).paddingRight.replace(/[^0-9\.]/g, '')
+    let length=this.slider.offsetWidth-+padding*2;
+  
     this.sliderItem =
       this.EementRef.nativeElement.parentElement.children[2].children[0]; //slider item
-    this.sliderLength = this.sliderItem.offsetWidth;
+    this.sliderLength = this.slider.offsetWidth;
     this.getSliderTotaLength();
     
 
-    let newPositionX =
-      this.positionX -
-      (window.innerWidth - (window.innerWidth - this.sliderLength));
+    let newPositionX =this.positionX - this.sliderLength;
     if (newPositionX < this.SliderTotaLength) {
       this.positionX = this.SliderTotaLength;
       this.renderer.setAttribute(
@@ -53,7 +53,7 @@ export class NextDirective {
     }
 
     // this.positionXChange.emit(this.positionX);
-    console.log("next button position x " +  this.positionX)
+    
     this.sliderItem.style.transform = `translate3d(${this.positionX}px, 0px, 0px)`;
     this.sliderItem.style.transitionDuration = '300ms';
     

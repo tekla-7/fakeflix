@@ -17,5 +17,7 @@ export class CardComponent {
     vote_average: 0,
     title:""
   };
-  constructor() {}
+  constructor() {
+ 
+  }
 }
