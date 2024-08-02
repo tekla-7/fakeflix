@@ -7,5 +7,5 @@ export interface MoviesDescription {
     release_date:string,
     vote_average:number,
     title:string,
-
+    poster_path?:string
 }

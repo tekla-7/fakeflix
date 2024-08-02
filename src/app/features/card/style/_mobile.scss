@@ -1,0 +1,21 @@
+@media screen and (max-width:767px) {
+    .card{
+        img {
+            border-radius: 5px;
+            width: 40vw;
+            
+           max-width: 250px;
+            height: 100%;
+        }
+        &:hover {
+            transform: scale(1.1) !important;
+        }
+    
+    }
+    .heightClass{
+           
+            height: 59.34vw;
+            
+        }
+}
+

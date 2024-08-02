@@ -1,5 +1,6 @@
 <div class="slider-container">
- <ng-container *ngFor="let ele of array; let i = index">
+  <app-alert [message]="error" [@fade] *ngIf="showError" ></app-alert>
+ <ng-container *ngFor="let ele of array; let list = index">
   <div class="row">
     <div class="slider-header-wrapper">
       <div class="title">
@@ -31,7 +32,7 @@
         ></span> -->
       </div>
     </div>
-    <div class="slider-wrapper">
+    <div class="slider-wrapper" >
       <div class="Row__slider--mask left" appPrev>
         <svg
           stroke="currentColor"
@@ -64,17 +65,18 @@
           <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
         </svg>
       </div>
-      <div class="slider">
+      <div class="slider" >
         <!-- style="transform: translate3d(positionX, 0px, 0px);transition-duration: 0ms;" -->
         <div
+        
           class="slider-item-list"
           [ngStyle]="{
             transform: 'translate3d(' + positionX + 'px, 0px, 0px)',
             'transition-duration': '300ms'
           }"
         >
-          <ng-container *ngFor="let movie of ele.array; let i = index">
-            <app-card [movie]="movie"></app-card>
+          <ng-container *ngFor="let movie of ele.array; let i = index" >
+            <app-card [movie]="movie" [index]="list"></app-card>
           </ng-container>
         </div>
       </div>
@@ -82,3 +84,4 @@
   </div>
 </ng-container>
 </div>
+<app-footer></app-footer>

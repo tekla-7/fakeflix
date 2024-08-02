@@ -13,7 +13,18 @@ import { SliderListComponent } from './features/slider-list/component/slider-lis
 import { CardComponent } from './features/card/card.component';
 import { NextDirective } from './features/slider-list/next.directive';
 import { PrevDirective } from './features/slider-list/prev.directive';
+import {AngularFireModule} from '@angular/fire/compat';
+import { AlertComponent } from './core/component/alert/alert.component';
+import { FooterComponent } from './core/component/footer/footer.component'
 
+const firebaseConfig = {
+  apiKey: "AIzaSyB1IyCnh_OjmioL_tYwenDjTE8o53_vgtI",
+  authDomain: "fakedlix-79236.firebaseapp.com",
+  projectId: "fakedlix-79236",
+  storageBucket: "fakedlix-79236.appspot.com",
+  messagingSenderId: "1063688445035",
+  appId: "1:1063688445035:web:a95bc2113744b10678a52e"
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,14 +34,17 @@ import { PrevDirective } from './features/slider-list/prev.directive';
     SliderListComponent,
     CardComponent,
     NextDirective,
-    PrevDirective
+    PrevDirective,
+    AlertComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

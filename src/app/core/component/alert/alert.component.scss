@@ -1,0 +1,15 @@
+.alert{
+    transition: all .2s ease-out;
+    position: fixed;
+    top:9vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35vw;
+    padding: 1.5vw 1vw;
+    z-index: 100;
+    background: rgba(229, 9, 20, 0.5);
+    box-shadow: 0 1px 5px  #141414;
+
+    text-align: center;
+    color:  #f2f2f2;
+}

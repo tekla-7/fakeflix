@@ -1,0 +1,17 @@
+.footer {
+
+    background-color: #141414;
+    display: block;
+    height: 10vw;
+    display: flex;
+    align-items: end;
+
+    .footer-element {
+        background-color: #000000e6;
+
+        border-top: 1px solid #ffffff80;
+        padding-top: 5vw;
+        height: 80px;
+        width: 100%;
+    }
+}

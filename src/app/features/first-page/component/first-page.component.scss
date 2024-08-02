@@ -126,6 +126,7 @@
                 border: 1px solid #141414;
                 color: #f2f2f2;
                 margin-top: .5em;
+               
 
                 svg {
                     font-size: 1.5em;
@@ -168,8 +169,10 @@
 
     }
 }
-
-
+.invalid{
+    border:2px solid #e50914!important;
+    border-radius: 5px
+}
 .loader {
     width: 20px;
     aspect-ratio: 1;

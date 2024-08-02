@@ -1,9 +1,13 @@
 @if(movie){
-<div class="card">
+<div class="card"  [ngClass]="{'heightClass': index == 2}">
+  
   <img
+  [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/original/' + movie.poster_path : 'https://image.tmdb.org/t/p/original/' + movie.backdrop_path"
     src="https://image.tmdb.org/t/p/original/{{ movie.backdrop_path }}"
     alt=""
   />
+  
+  
   <div class="card-info">
     <div class="card-info-iconswrapper">
       <a class="card-info-icon icon--play" href="/play">

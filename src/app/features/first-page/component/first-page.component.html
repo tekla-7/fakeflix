@@ -1,4 +1,5 @@
 <div class="container">
+  <app-alert [message]="error" [@fade] *ngIf="showError" ></app-alert>
   <div class="auth-wrapper">
     <div class="auth-bc-shadow"></div>
     <div class="auth-bcLayer"></div>
@@ -23,7 +24,7 @@
           class="sign-in-form"
           [@fadeIn]
         >
-          <div class="signin-input-wrapper fadeInAnimation">
+          <div class="signin-input-wrapper fadeInAnimation"  [ngClass]="{'invalid': SignInForm.get('email')?.invalid && SignInForm.get('email')?.touched && SignInForm.get('email')?.value.trim() !== ''}">
             <input
               type="text"
               name="email"
@@ -32,7 +33,7 @@
               formControlName="email"
             />
           </div>
-          <div class="signin-input-wrapper fadeInAnimation">
+          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': SignInForm.get('password')?.invalid && SignInForm.get('password')?.touched && SignInForm.get('password')?.value.trim() !== ''}">
             <input
               type="password"
               name="password"
@@ -52,7 +53,7 @@
             type="button"
             class="signin-button google-button fadeInAnimation"
           >
-            <div *ngIf="!isLoading">
+            <div *ngIf="!isLoading" class="flex-center ">
               <svg
                 stroke="currentColor"
                 fill="currentColor"
@@ -94,10 +95,10 @@ c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.
             <div *ngIf="isLoading" class="loader"></div>
           </button>
           <button
+            (click)="SignInAnonymously()"
             type="button"
             class="signin-button anonymous-button fadeInAnimation"
             style="opacity: 1; transform: none"
-            (click)="navigate()"
           >
             <div *ngIf="isLoading" class="loader"></div>
             <div *ngIf="!isLoading">Sign in anonymously</div>
@@ -112,7 +113,7 @@ c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.
           class="sign-in-up"
           [@fadeIn]
         >
-          <div class="signin-input-wrapper fadeInAnimation">
+          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': SignUpForm.get('name')?.invalid && SignUpForm.get('name')?.touched && SignUpForm.get('name')?.value.trim() !== ''}">
             <input
               type="text"
               name="yourname"
@@ -121,7 +122,7 @@ c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.
               formControlName="name"
             />
           </div>
-          <div class="signin-input-wrapper fadeInAnimation">
+          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': SignUpForm.get('email')?.invalid && SignUpForm.get('email')?.touched && SignUpForm.get('email')?.value.trim() !== ''}">
             <input
               type="text"
               name="email"
@@ -130,7 +131,7 @@ c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.
               formControlName="email"
             />
           </div>
-          <div class="signin-input-wrapper fadeInAnimation">
+          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': SignUpForm.get('password')?.invalid && SignUpForm.get('password')?.touched && SignUpForm.get('password')?.value.trim() !== ''}">
             <input
               type="password"
               name="password"
@@ -139,7 +140,7 @@ c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.
               formControlName="password"
             />
           </div>
-          <div class="signin-input-wrapper fadeInAnimation">
+          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': SignUpForm.get('confirmPassword')?.invalid && SignUpForm.get('confirmPassword')?.touched && SignUpForm.get('confirmPassword')?.value.trim() !== ''}">
             <input
               type="password"
               name="repeat yout password"
@@ -151,7 +152,6 @@ c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.
           <button
             type="submit"
             class="signin-button submit-button fadeInAnimation"
-            (click)="navigate()"
           >
             <div *ngIf="isLoading" class="loader"></div>
             <div *ngIf="!isLoading">Sign up</div>
@@ -161,9 +161,10 @@ c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.
         <div class="auth-bottom-line"></div>
         <div class="auth-sign-up">
           {{ question }}
-          <span class="toggler" (click)="ShowSignUp()">{{ text }}</span>
+          <span class="toggler" (click)="ShowSignUp()">{{ text2 }}</span>
         </div>
       </div>
     </div>
   </div>
 </div>
+

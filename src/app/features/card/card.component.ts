@@ -17,7 +17,8 @@ export class CardComponent {
     vote_average: 0,
     title:""
   };
+  @Input() index:number=0
   constructor() {
- 
+ console.log("thiss issssss list" + this.index)
   }
 }
