@@ -24,7 +24,7 @@
           class="sign-in-form"
           [@fadeIn]
         >
-          <div class="signin-input-wrapper fadeInAnimation"  [ngClass]="{'invalid': SignInForm.get('email')?.invalid && SignInForm.get('email')?.touched && SignInForm.get('email')?.value.trim() !== ''}">
+          <div class="signin-input-wrapper fadeInAnimation"  [ngClass]="{'invalid':emailCtrl.invalid && emailCtrl.touched && emailCtrl.value && emailCtrl.value.trim() !== ''}">
             <input
               type="text"
               name="email"

@@ -7,5 +7,13 @@ export interface MoviesDescription {
     release_date:string,
     vote_average:number,
     title:string,
-    poster_path?:string
+    poster_path?:string,
+    origin_country?:string,
+    adult?:string,
+    original_name?:string
+    popularity?:number;
+    first_air_date?:string
+   name?:string
+
+    
 }

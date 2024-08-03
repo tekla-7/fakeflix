@@ -1,4 +1,4 @@
-import { Component, input, Input } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 import { MoviesDescription } from '../../core/interfaces/movies-description';
 
 @Component({
@@ -7,18 +7,12 @@ import { MoviesDescription } from '../../core/interfaces/movies-description';
   styleUrl: './card.component.scss',
 })
 export class CardComponent {
-  @Input() movie: MoviesDescription = {
-    id: 0,
-    backdrop_path: '',
-    genre_ids: [],
-    original_language: '',
-    overview: '',
-    release_date: '',
-    vote_average: 0,
-    title:""
-  };
-  @Input() index:number=0
-  constructor() {
- console.log("thiss issssss list" + this.index)
+  @Input() movie!: MoviesDescription ;
+  @Input() index:number=0;
+  @Output() movieId=new EventEmitter<{ id: number, index: number }>()
+  constructor() {}
+  sendMovieId(){
+    
+    this.movieId.emit({ id: this.movie.id, index: this.index} )
   }
 }

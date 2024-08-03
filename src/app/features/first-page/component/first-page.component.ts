@@ -8,7 +8,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { error } from 'console';
@@ -153,5 +153,7 @@ export class FirstPageComponent implements OnInit {
     }, 3000);
   }
 
-  
+  get emailCtrl(): AbstractControl {
+    return this. SignInForm.get('email') as AbstractControl;
+  }
 }

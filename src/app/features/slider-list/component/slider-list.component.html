@@ -1,87 +1,252 @@
 <div class="slider-container">
-  <app-alert [message]="error" [@fade] *ngIf="showError" ></app-alert>
- <ng-container *ngFor="let ele of array; let list = index">
-  <div class="row">
-    <div class="slider-header-wrapper">
-      <div class="title">
-        <span class="title-element">{{ele.title}}</span>
-        <span class="showmore">
-          Show all
-          <svg
-            stroke="currentColor"
-            fill="none"
-            stroke-width="2"
-            viewBox="0 -5 24 24"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            height="1em"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </span>
-      </div>
-      <div class="slider-pagination slider-pagination-dots">
-        <ng-container *ngFor="let dot of dotList; let i = index">
-          <span class="slider-pagination-dot"></span>
-          <!-- [ngClass]="{ 'slider-pagination-dot-active': currentActiveDot==i}" -->
-        </ng-container>
-        <!-- <span
+  <app-alert [message]="error" [@fade] *ngIf="showError"></app-alert>
+  <ng-container *ngFor="let ele of array; let list = index">
+    <div class="row">
+      <div class="slider-header-wrapper">
+        <div class="title">
+          <span class="title-element">{{ ele.title }}</span>
+          <span class="showmore">
+            Show all
+            <svg
+              stroke="currentColor"
+              fill="none"
+              stroke-width="2"
+              viewBox="0 -5 24 24"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </span>
+        </div>
+        <div class="slider-pagination slider-pagination-dots">
+          <ng-container *ngFor="let dot of dotList; let i = index">
+            <span class="slider-pagination-dot"></span>
+            <!-- [ngClass]="{ 'slider-pagination-dot-active': currentActiveDot==i}" -->
+          </ng-container>
+          <!-- <span
           class="slider-pagination-dot slider-pagination-dot-active"
         ></span> -->
+        </div>
       </div>
-    </div>
-    <div class="slider-wrapper" >
-      <div class="Row__slider--mask left" appPrev>
-        <svg
-          stroke="currentColor"
-          fill="currentColor"
-          stroke-width="0"
-          viewBox="0 0 24 24"
-          class="Row__slider--mask-icon left"
-          height="3em"
-          width="3em"
-          xmlns="http://www.w3.org/2000/svg"
-          style="color: white"
-        >
-          <path fill="none" d="M0 0h24v24H0z"></path>
-          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
-        </svg>
-      </div>
-      <div class="Row__slider--mask right" appNext>
-        <svg
-          stroke="currentColor"
-          fill="currentColor"
-          stroke-width="0"
-          viewBox="0 0 24 24"
-          class="Row__slider--mask-icon right"
-          height="3em"
-          width="3em"
-          xmlns="http://www.w3.org/2000/svg"
-          style="color: white"
-        >
-          <path fill="none" d="M0 0h24v24H0z"></path>
-          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
-        </svg>
-      </div>
-      <div class="slider" >
-        <!-- style="transform: translate3d(positionX, 0px, 0px);transition-duration: 0ms;" -->
-        <div
-        
-          class="slider-item-list"
-          [ngStyle]="{
-            transform: 'translate3d(' + positionX + 'px, 0px, 0px)',
-            'transition-duration': '300ms'
-          }"
-        >
-          <ng-container *ngFor="let movie of ele.array; let i = index" >
-            <app-card [movie]="movie" [index]="list"></app-card>
-          </ng-container>
+      <div class="slider-wrapper">
+        <div class="Row__slider--mask left" appPrev>
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            class="Row__slider--mask-icon left"
+            height="3em"
+            width="3em"
+            xmlns="http://www.w3.org/2000/svg"
+            style="color: white"
+          >
+            <path fill="none" d="M0 0h24v24H0z"></path>
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+          </svg>
+        </div>
+        <div class="Row__slider--mask right" appNext>
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            class="Row__slider--mask-icon right"
+            height="3em"
+            width="3em"
+            xmlns="http://www.w3.org/2000/svg"
+            style="color: white"
+          >
+            <path fill="none" d="M0 0h24v24H0z"></path>
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+          </svg>
+        </div>
+        <div class="slider">
+          <!-- style="transform: translate3d(positionX, 0px, 0px);transition-duration: 0ms;" -->
+          <div
+            class="slider-item-list"
+            [ngStyle]="{
+              transform: 'translate3d(' + positionX + 'px, 0px, 0px)',
+              'transition-duration': '300ms'
+            }"
+          >
+            <ng-container *ngFor="let movie of ele.array; let i = index">
+              <app-card
+                [movie]="movie"
+                [index]="list"
+                (movieId)="showDescription($event)"
+              ></app-card>
+            </ng-container>
+          </div>
         </div>
       </div>
     </div>
+  </ng-container>
+  @if(showCard){
+  <div class="center" >
+    <div class="navbar-primarynav-content" (click)="hideCard()" [@fade]></div>
+    <div class="showCard">
+      <div class="showCard-head">
+        <div class="showCard-head-wrapper">
+          <div class="close" (click)="hideCard()"><img src="../../../../assets/close-fill (1).png" alt=""></div>
+          <img
+            class="bg-img"
+            src="https://image.tmdb.org/t/p/original/{{
+              showElement.backdrop_path
+            }}"
+            alt=""
+          />
+          <div class="buttons-wrapper">
+            <div class="title">{{ showElement.title }}</div>
+            <div class="buttons">
+              <a class="button" href="">
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 448 512"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"
+                  ></path>
+                </svg>
+                <span>Play</span>
+              </a>
+              <button class="card-info-icon icon-favourite">
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 448 512"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                  ></path>
+                </svg>
+              </button>
+              <button class="card-info-icon icon-favourite">
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 448 512"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="panel"></div>
+        <div class="panel-shadow"></div>
+      </div>
+      <div class="showCard-body">
+        <div class="first-line">
+          <div class="imdb">
+            <svg
+              version="1.0"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1521.000000 801.000000"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <g
+                transform="translate(0.000000,801.000000) scale(0.100000,-0.100000)"
+                fill="#ffffff"
+                stroke="transparent"
+              >
+                <path
+                  d="M734 7989 c-150 -14 -319 -86 -439 -186 -116 -97 -225 -279 -262 -438 -17 -77 -18 -210 -18 -3365 0 -3724 -9 -3352 85 -3545 105 -214 291 -365 530 -428 l85 -22 6895 0 6895 0 85 22 c296 78 515 297 593 593 l22 85 0 3290 c0 3160 -1 3293 -18 3370 -37 159 -146 341 -262 438 -125 105 -285 171 -452 187 -120 12 -13619 11 -13739 -1z m13851 -423 c77 -38 153 -114 191 -191 l29 -60 0 -3315 0 -3315 -29 -60 c-38 -77 -114 -153 -191 -191 l-60 -29 -6915 0 -6915 0 -60 29 c-77 38 -153 114 -191 191 l-29 60 0 3315 0 3315 27 55 c51 103 141 184 241 215 35 11 1230 13 6942 12 l6900 -2 60 -29z"
+                ></path>
+                <path
+                  d="M10410 4200 l0 -2200 400 0 400 0 0 100 0 100 78 -39 c277 -138 483 -181 633 -131 187 63 353 228 423 422 62 170 59 119 63 1233 5 1077 -1 1273 -37 1425 -55 224 -191 387 -379 452 -55 19 -87 23 -191 23 l-125 0 -85 -41 c-109 -53 -184 -110 -293 -223 l-87 -90 0 584 0 585 -400 0 -400 0 0 -2200z m1106 575 c26 -15 54 -43 69 -69 l25 -43 0 -858 c0 -857 0 -859 -21 -903 -33 -67 -94 -102 -178 -102 -81 0 -139 31 -176 94 l-25 43 0 863 0 863 25 43 c37 63 94 94 174 94 51 0 73 -5 107 -25z"
+                ></path>
+                <path
+                  d="M2810 4000 l0 -2000 400 0 400 0 0 2000 0 2000 -400 0 -400 0 0 -2000z"
+                ></path>
+                <path
+                  d="M4010 4000 l0 -2000 400 0 400 0 2 1402 3 1402 360 -1402 360 -1402 249 2 248 3 387 1399 386 1399 3 -1401 2 -1402 400 0 400 0 0 2000 0 2000 -597 0 -598 0 -304 -1015 c-168 -557 -307 -1012 -311 -1010 -3 2 -138 458 -300 1014 l-295 1011 -597 0 -598 0 0 -2000z"
+                ></path>
+                <path
+                  d="M8010 3999 l0 -2002 528 6 c290 4 566 11 614 17 203 23 334 62 473 142 162 92 249 177 310 303 74 153 70 60 70 1505 0 1211 -1 1300 -18 1379 -33 153 -100 285 -187 370 -51 50 -262 184 -332 212 -29 11 -84 27 -123 35 -89 18 -522 33 -982 34 l-353 0 0 -2001z m1001 1372 c75 -29 132 -80 166 -149 l28 -57 0 -1175 0 -1175 -27 -51 c-52 -99 -130 -141 -280 -151 l-88 -6 0 1398 0 1398 73 -5 c39 -3 97 -15 128 -27z"
+                ></path>
+              </g>
+            </svg>
+            <span>{{ showElement.vote_average }}</span>
+          </div>
+        </div>
+        <div class="description-list">
+          <div>
+            <span class="description-list-title">Original Name :</span>
+            <span *ngIf="showElement.original_name; else fallback1">
+              {{ showElement.original_name}}
+            </span>
+            <ng-template #fallback1>
+              <span>{{showElement.title}}</span>
+            </ng-template>
+          </div>
+          <div>
+            <span class="description-list-title">Original Language :</span>
+            <span *ngIf="showElement.original_language; else fallback3">
+              {{ showElement.original_language }}
+            </span>
+            <ng-template #fallback3>
+              <span>ENG</span>
+            </ng-template>
+          
+          </div>
+          <div>
+            <span class="description-list-title">Origin Country :</span>
+            <span *ngIf="showElement.origin_country; else fallback4">
+              {{ showElement.origin_country }}
+            </span>
+            <ng-template #fallback4>
+              <span>USA</span>
+            </ng-template>
+          
+          </div>
+          <div>
+            <span class="description-list-title">Release Date :</span>
+            <span *ngIf="showElement.release_date; else fallback2">
+              {{ showElement.release_date}}
+            </span>
+            <ng-template #fallback2>
+              <span>2024</span>
+            </ng-template>
+          </div>
+          <div>
+            <span class="description-list-title">Popularity :</span>
+            <span *ngIf="showElement.popularity; else fallback5">
+              {{ showElement.popularity }}
+            </span>
+            <ng-template #fallback5>
+              <span>225</span>
+            </ng-template>
+            
+          </div>
+        </div>
+        <div >
+          <div class="description-list-title">overview :</div>
+          <div class="descriptio">{{showElement.overview}}</div>
+        </div>
+
+      </div>
+    </div>
   </div>
-</ng-container>
+  }
 </div>
 <app-footer></app-footer>

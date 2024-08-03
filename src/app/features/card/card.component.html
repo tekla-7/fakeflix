@@ -1,9 +1,9 @@
 @if(movie){
-<div class="card"  [ngClass]="{'heightClass': index == 2}">
+<div class="card"  [ngClass]="{'heightClass': index == 2}" (click)="sendMovieId()">
   
   <img
   [src]="movie.poster_path ? 'https://image.tmdb.org/t/p/original/' + movie.poster_path : 'https://image.tmdb.org/t/p/original/' + movie.backdrop_path"
-    src="https://image.tmdb.org/t/p/original/{{ movie.backdrop_path }}"
+    
     alt=""
   />
   
