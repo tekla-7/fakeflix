@@ -5,8 +5,6 @@ import {
   OnDestroy,
   ViewChild,
 } from '@angular/core';
-import { MoviesDescription } from '../../../core/interfaces/movies-description';
-import { MoviesListService } from '../../../core/service/movies-list.service';
 import { HttpClient } from '@angular/common/http';
 import { find, Observable, Subject, takeUntil } from 'rxjs';
 import { error } from 'console';
@@ -17,6 +15,8 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { MoviesListService } from '../../../../../core/service/movies-list.service';
+import { MoviesDescription } from '../../../../../core/interfaces/movies-description';
 
 
 @Component({

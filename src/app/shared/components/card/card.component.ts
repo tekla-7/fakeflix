@@ -1,5 +1,5 @@
 import { Component, EventEmitter, input, Input, Output } from '@angular/core';
-import { MoviesDescription } from '../../core/interfaces/movies-description';
+import { MoviesDescription } from '../../../core/interfaces/movies-description';
 
 @Component({
   selector: 'app-card',
@@ -8,6 +8,7 @@ import { MoviesDescription } from '../../core/interfaces/movies-description';
   
 })
 export class CardComponent {
+
   @Input() movie!: MoviesDescription ;
   @Input() tvStyle:boolean =false;
   @Input() tvHeader:boolean =false;

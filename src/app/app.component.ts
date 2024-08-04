@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './features/first-page/service/auth.service';
+import { AuthService } from './features/auth/service/auth.service';
 import { map, take } from 'rxjs';
 import { Router } from '@angular/router';
 

@@ -22,9 +22,9 @@ import { AuthResponseData } from '../../../core/interfaces/AuthResponse-Data';
 import { passwordvalidator } from '../service/passwordconfirm-validator';
 
 @Component({
-  selector: 'app-first-page',
-  templateUrl: './first-page.component.html',
-  styleUrl: './first-page.component.scss',
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrl: './auth.component.scss',
   animations: [
     trigger('fadeIn', [
       transition(':enter', [
@@ -60,7 +60,7 @@ import { passwordvalidator } from '../service/passwordconfirm-validator';
     ]),
   ],
 })
-export class FirstPageComponent implements OnInit, OnDestroy {
+export class AuthComponent implements OnInit, OnDestroy {
   error: string = '';
   showError: boolean = false;
   timeout: any;

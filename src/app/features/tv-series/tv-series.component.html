@@ -2,9 +2,9 @@
 <div class="tv-series-container">
   <div class="top-tv-series" [style.background-image]="backgroundImg">
     <div class="card-wrapper">
-      <app-card [movie]="moviesList[4]" [tvHeader]="true" (ID)="handleBackgroun(4)"></app-card>
-      <app-card [movie]="moviesList[9]" [tvHeader]="true" (ID)="handleBackgroun(9)"></app-card>
-      <app-card [movie]="moviesList[12]" [tvHeader]="true" (ID)="handleBackgroun(12)"></app-card>
+      <app-card [movie]="moviesList[4]" [tvHeader]="true"  (mouseover)="handleBackgroun(4)"></app-card>
+      <app-card [movie]="moviesList[9]" [tvHeader]="true" (mouseover)="handleBackgroun(9)"></app-card>
+      <app-card [movie]="moviesList[12]" [tvHeader]="true"  (mouseover)="handleBackgroun(12)"></app-card>
     </div>
     <div class="panel"></div>
     <div class="panel-shadow"></div>

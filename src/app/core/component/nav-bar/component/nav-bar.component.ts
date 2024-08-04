@@ -6,7 +6,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
-import { AuthService } from '../../first-page/service/auth.service';
+import { AuthService } from '../../../../features/auth/service/auth.service';
 
 @Component({
   selector: 'app-nav-bar',

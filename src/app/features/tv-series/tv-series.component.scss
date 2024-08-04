@@ -5,6 +5,7 @@
 .tv-series-container {
     background-color: #141414;
     min-height: calc(100vh - 80px);
+    
 
     .top-tv-series {
         transition: all .2s ease-out;
@@ -20,6 +21,7 @@
 
         // position: absolute;
         width: 100%;
+        background-position: center;
 
     }
 

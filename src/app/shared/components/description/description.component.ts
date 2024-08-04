@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { MoviesDescription } from '../../core/interfaces/movies-description';
 import {
   animate,
   state,
@@ -7,6 +6,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { MoviesDescription } from '../../../core/interfaces/movies-description';
 
 @Component({
   selector: 'app-description',

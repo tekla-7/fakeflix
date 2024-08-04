@@ -17,6 +17,10 @@
     z-index: 20;
     // position: absolute;
     position: fixed;
+    .router-active{
+        border-bottom: 1px solid #e50914;
+        padding-bottom: 1px;
+    }
 
     .header-logo {
 
