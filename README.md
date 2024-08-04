@@ -13,7 +13,7 @@
 - **Detailed Description About Movies/TV Series:** You can see detailed information ( original name, imdb rating, overview... ) by clicking on desired movie/tv series in any page
 
 ## Getting Started
-
+ - **hosted on:** `https://marvelous-meringue-581918.netlify.app`
 
 
 
