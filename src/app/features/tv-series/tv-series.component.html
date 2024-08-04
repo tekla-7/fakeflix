@@ -1,5 +1,6 @@
 
 <div class="tv-series-container">
+  <app-alert [message]="error" *ngIf="showError"></app-alert>
   <div class="top-tv-series" [style.background-image]="backgroundImg">
     <div class="card-wrapper">
       <app-card [movie]="moviesList[4]" [tvHeader]="true"  (mouseover)="handleBackgroun(4)"></app-card>

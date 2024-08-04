@@ -3,6 +3,7 @@ import {
   ElementRef,
   HostListener,
   OnDestroy,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -17,7 +18,6 @@ import {
 } from '@angular/animations';
 import { MoviesListService } from '../../../../../core/service/movies-list.service';
 import { MoviesDescription } from '../../../../../core/interfaces/movies-description';
-
 
 @Component({
   selector: 'app-slider-list',
@@ -60,7 +60,7 @@ import { MoviesDescription } from '../../../../../core/interfaces/movies-descrip
     ]),
   ],
 })
-export class SliderListComponent implements OnDestroy {
+export class SliderListComponent implements OnDestroy, OnInit {
   array: [{ title: string; array: MoviesDescription[] }] = [
     { title: '', array: [] },
   ];
@@ -73,10 +73,8 @@ export class SliderListComponent implements OnDestroy {
   error: string = '';
   showCard: boolean = false;
   private _destroy$ = new Subject();
-  constructor(
-    private movieslistService: MoviesListService,
-   
-  ) {
+  constructor(private movieslistService: MoviesListService) {}
+  ngOnInit(): void {
     this.movieslistService
       .getMovies()
       .pipe(takeUntil(this._destroy$))
@@ -94,53 +92,52 @@ export class SliderListComponent implements OnDestroy {
       .getSeries()
       .pipe(takeUntil(this._destroy$))
       .subscribe({
-        next:(data) => {
+        next: (data) => {
           let obj = { title: 'Top Rated On Fakeflix', array: data };
           this.array.push(obj);
         },
-        error:(error) => {
+        error: (error) => {
           (this.showError = true), (this.error = error);
-        }
+        },
       });
 
     this.movieslistService
       .getTvseries()
       .pipe(takeUntil(this._destroy$))
       .subscribe({
-        next:(data) => {
+        next: (data) => {
           let obj = { title: 'Tv Series Airing Today', array: data };
           this.array.push(obj);
         },
-        error:(error) => {
+        error: (error) => {
           (this.showError = true), (this.error = error);
-        }
+        },
       });
 
-   
     this.movieslistService
       .getTopRate()
       .pipe(takeUntil(this._destroy$))
       .subscribe({
-       next: (data) => {
+        next: (data) => {
           let obj = { title: 'IMDb Top Rated Movies', array: data };
           this.array.push(obj);
         },
-       error: (error) => {
+        error: (error) => {
           (this.showError = true), (this.error = error);
-        }
+        },
       });
 
     this.movieslistService
       .getUpcoming()
       .pipe(takeUntil(this._destroy$))
       .subscribe({
-        next:(data) => {
+        next: (data) => {
           let obj = { title: 'Upcoming Movies', array: data };
           this.array.push(obj);
         },
-        error:(error) => {
+        error: (error) => {
           (this.showError = true), (this.error = error);
-        }
+        },
       });
   }
 
@@ -160,6 +157,4 @@ export class SliderListComponent implements OnDestroy {
     this._destroy$.complete();
     this._destroy$.unsubscribe();
   }
-
-
 }

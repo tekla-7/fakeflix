@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MoviesListService } from '../../core/service/movies-list.service';
 import { MoviesDescription } from '../../core/interfaces/movies-description';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
@@ -23,7 +23,8 @@ export class TVSeriesComponent implements OnInit, OnDestroy {
   constructor(
     private moviesService: MoviesListService,
     private activatedRoute: ActivatedRoute,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -39,8 +40,9 @@ export class TVSeriesComponent implements OnInit, OnDestroy {
         this.text = 'Most Popular TV & Movies Right Now : ';
         // this.backgroundImg='/9l1eZiJHmhr5jIlthMdJN5WYoff.jpg'
         this.handlePopular();
+      }else{
+        this.router.navigateByUrl('*')
       }
-     
   
     });
    

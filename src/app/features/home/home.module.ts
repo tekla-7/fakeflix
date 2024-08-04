@@ -6,6 +6,7 @@ import { PrevDirective } from './components/slider-list/prev.directive';
 import { NextDirective } from './components/slider-list/next.directive';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { GetLinkPipe } from './components/slider-list/get-link.pipe';
 
 
 
@@ -16,6 +17,7 @@ import { RouterModule } from '@angular/router';
     PrevDirective,
     NextDirective,
     SliderListComponent,
+    GetLinkPipe,
   ],
   imports: [
     CommonModule,

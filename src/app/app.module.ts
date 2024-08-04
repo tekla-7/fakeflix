@@ -11,6 +11,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { FooterComponent } from './core/component/footer/footer.component';
 import { SharedModule } from './shared/shared.module';
 import { NavBarComponent } from './core/component/nav-bar/component/nav-bar.component';
+import { PageNotFoundComponent } from './core/component/page-not-found/page-not-found.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyB1IyCnh_OjmioL_tYwenDjTE8o53_vgtI',
@@ -26,6 +27,7 @@ const firebaseConfig = {
     AuthComponent,
     NavBarComponent,
     FooterComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
