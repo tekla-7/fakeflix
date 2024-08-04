@@ -16,8 +16,7 @@
     border-radius: 6px;
 
     &:hover {
-        margin-right: 1rem;
-        margin-left: 1rem;
+       
         overflow: initial !important;
         opacity: 1;
         transform-origin: right;
@@ -60,7 +59,7 @@
         justify-content: flex-end;
         left: 0;
         opacity: 0;
-        padding: 1em;
+        // padding: 1em;
         position: absolute;
         transform: translateY(15%);
         transition: all .4s ease .15s;
@@ -78,10 +77,9 @@
                 color: #f2f2f2;
                 cursor: pointer;
                 display: inline-flex;
-                font-size: 12px;
-                margin: 0 5px .6em;
+               
                 outline: none;
-                padding: 6px;
+               
                 transition: all .3s ease-out;
             }
 
@@ -105,9 +103,9 @@
         }
 
         .card-info-title {
-            font-size: 15px;
+
             color: #f2f2f2;
-            font-weight: 600;
+          
         }
 
         .card-info-ganres {

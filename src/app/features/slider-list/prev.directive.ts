@@ -35,7 +35,7 @@ export class PrevDirective {
      
 
     }
-    // this.sharedDataService.setPositionX(this.positionX)
+    
     this.sliderItem.style.transform = `translate3d(${this.positionX}px, 0px, 0px)`;
     this.sliderItem.style.transitionDuration = '300ms';
   }

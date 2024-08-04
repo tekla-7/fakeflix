@@ -15,7 +15,9 @@ import { NextDirective } from './features/slider-list/next.directive';
 import { PrevDirective } from './features/slider-list/prev.directive';
 import {AngularFireModule} from '@angular/fire/compat';
 import { AlertComponent } from './core/component/alert/alert.component';
-import { FooterComponent } from './core/component/footer/footer.component'
+import { FooterComponent } from './core/component/footer/footer.component';
+import { TVSeriesComponent } from './features/tv-series/tv-series.component';
+import { DescriptionComponent } from './features/description/description.component'
 
 const firebaseConfig = {
   apiKey: "AIzaSyB1IyCnh_OjmioL_tYwenDjTE8o53_vgtI",
@@ -36,7 +38,9 @@ const firebaseConfig = {
     NextDirective,
     PrevDirective,
     AlertComponent,
-    FooterComponent
+    FooterComponent,
+    TVSeriesComponent,
+    DescriptionComponent
   ],
   imports: [
     BrowserModule,

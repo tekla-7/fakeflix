@@ -7,12 +7,17 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, ElementRef, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { error } from 'console';
-import { Observable } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { AuthResponseData } from '../../../core/interfaces/AuthResponse-Data';
 import { passwordvalidator } from '../service/passwordconfirm-validator';
 
@@ -55,7 +60,7 @@ import { passwordvalidator } from '../service/passwordconfirm-validator';
     ]),
   ],
 })
-export class FirstPageComponent implements OnInit {
+export class FirstPageComponent implements OnInit, OnDestroy {
   error: string = '';
   showError: boolean = false;
   timeout: any;
@@ -71,19 +76,28 @@ export class FirstPageComponent implements OnInit {
       Validators.minLength(2),
     ]),
   });
-  SignUpForm: FormGroup = new FormGroup({
-    name: new FormControl(null, [Validators.required]),
-    email: new FormControl(null, [Validators.required, Validators.email]),
-    password: new FormControl(null, [Validators.required , Validators.minLength(2),]),
-    confirmPassword: new FormControl(null, [Validators.required , Validators.minLength(2),]),
-  },{
-    validators:passwordvalidator
-  });
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    
-  ) {}
+  SignUpForm: FormGroup = new FormGroup(
+    {
+      name: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+      confirmPassword: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(2),
+      ]),
+    },
+    {
+      validators: passwordvalidator,
+    }
+  );
+  private _destroy$ = new Subject();
+  constructor(private router: Router, private authService: AuthService) {}
+
+  ngOnInit(): void {}
+
   SignInAnonymously() {
     clearTimeout(this.timeout);
     this.isLoading = true;
@@ -92,7 +106,6 @@ export class FirstPageComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
   SignInSubmit() {
     this.handleFormSubmit(this.SignInForm, 'signin');
   }
@@ -127,24 +140,23 @@ export class FirstPageComponent implements OnInit {
       this.isLoading = false;
       this.handleShowError();
     }
-
   }
   private authObservable(auth: Observable<AuthResponseData>) {
     clearTimeout(this.timeout);
     this.showError = false;
 
-    auth.subscribe(
-      (resData) => {
+    auth.pipe(takeUntil(this._destroy$)).subscribe({
+      next: (resData) => {
         this.isLoading = false;
         this.router.navigate(['/home']);
       },
-      (errorRes) => {
+      error: (errorRes) => {
         this.error = errorRes;
         this.showError = true;
         this.handleShowError();
         this.isLoading = false;
-      }
-    );
+      },
+    });
   }
 
   private handleShowError() {
@@ -154,6 +166,26 @@ export class FirstPageComponent implements OnInit {
   }
 
   get emailCtrl(): AbstractControl {
-    return this. SignInForm.get('email') as AbstractControl;
+    return this.SignInForm.get('email') as AbstractControl;
+  }
+  get passwordCtrl(): AbstractControl {
+    return this.SignInForm.get('password') as AbstractControl;
+  }
+  get passwordUpCtrl(): AbstractControl {
+    return this.SignUpForm.get('password') as AbstractControl;
+  }
+  get emaildUpCtrl(): AbstractControl {
+    return this.SignUpForm.get('email') as AbstractControl;
+  }
+  get confirmPasswordUpCtrl(): AbstractControl {
+    return this.SignUpForm.get('confirmPassword') as AbstractControl;
+  }
+  get namedUpCtrl(): AbstractControl {
+    return this.SignUpForm.get('name') as AbstractControl;
+  }
+  ngOnDestroy(): void {
+    this._destroy$.next(true);
+    this._destroy$.complete();
+    this._destroy$.unsubscribe();
   }
 }

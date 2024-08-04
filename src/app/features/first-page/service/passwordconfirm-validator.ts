@@ -1,8 +1,7 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-
 export const passwordvalidator: ValidatorFn = (
-  control: AbstractControl,
+  control: AbstractControl
 ): ValidationErrors | null => {
   const name = control.get('password');
   const alterEgo = control.get('confirmpassword');
@@ -11,4 +10,3 @@ export const passwordvalidator: ValidatorFn = (
     ? { noMatch: true }
     : null;
 };
-

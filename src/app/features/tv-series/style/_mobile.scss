@@ -1,0 +1,27 @@
+@media screen and (max-width:767px) {
+    .top-tv-series{
+        height: 70vh;
+        .card-wrapper{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            padding:20vw  4vw  4vw  4vw ;
+        }
+    }
+    .card-list {
+        padding: 6vw 4vw 4vw 4vw;
+
+        .list {
+            display: grid;
+            grid-template-columns: auto auto;
+            row-gap: 4vw;
+            column-gap: 2vw;
+        }
+
+
+    }
+    
+}
+

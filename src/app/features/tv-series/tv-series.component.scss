@@ -1,0 +1,32 @@
+@import "./style/desktop";
+@import "./style/mobile";
+@import "./style/tablet";
+
+.tv-series-container {
+    background-color: #141414;
+    min-height: calc(100vh - 80px);
+
+    .top-tv-series {
+        transition: all .2s ease-out;
+        opacity: 1;
+        will-change: opacity, transform;
+        align-items: center;
+
+        // background: #141414;
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+
+        // position: absolute;
+        width: 100%;
+
+    }
+
+    .title {
+        font-size: 20px;
+        color: #f2f2f2;
+        margin-bottom: 6vw;
+    }
+
+}

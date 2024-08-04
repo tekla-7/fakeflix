@@ -1,0 +1,64 @@
+@media screen and (max-width:767px) {
+    .showCard {
+        width: 80vw;
+        height: 60vh;
+        padding-bottom: 5%;
+
+        .buttons-wrapper {
+            padding: 0 3% 0 3%;
+            top: 70%;
+
+            .title {
+                color: #f2f2f2;
+                font-size: 15px;
+                margin-bottom: 7%;
+            }
+
+            .buttons {
+                .button {
+                    width: 27%;
+                    padding: 3%;
+                    margin-right: 10px;
+                }
+
+                a {
+                    padding: 5%;
+                }
+
+                .card-info-icon {
+                    font-size: 12px;
+                    margin: 0 3%;
+
+                    padding: 2%;
+                }
+            }
+        }
+        .first-line{
+            padding-top: 10%;
+        }
+        .showCard-body{
+            padding: 4% 3%;
+            .description-list {
+                font-size: 16px;
+                font-weight: 400;
+                padding: 5% 0;
+
+                div {
+                    padding: 1% 0;
+                }
+            }
+            .description-list-title {
+                margin-right: 10px;
+                color: #aaa;
+            }
+
+            .descriptio {
+                width: 100%;
+                margin-top: 1%;
+
+                line-height: 1.5;
+            }
+        }
+    }
+
+}

@@ -1,4 +1,10 @@
-import { Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { MoviesDescription } from '../../../core/interfaces/movies-description';
 import { MoviesListService } from '../../../core/service/movies-list.service';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +17,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { FindByIdService } from '../../../core/service/find-by-id.service';
+
 
 @Component({
   selector: 'app-slider-list',
@@ -58,95 +64,102 @@ export class SliderListComponent implements OnDestroy {
   array: [{ title: string; array: MoviesDescription[] }] = [
     { title: '', array: [] },
   ];
-  showElement:any;
+  showElement: any;
   positionX: number = 0;
   dotList: number[] = [];
   cardWidth: number = 0;
   dot: number = 1;
   showError: boolean = false;
   error: string = '';
-  showCard:boolean=false;
+  showCard: boolean = false;
   private _destroy$ = new Subject();
   constructor(
     private movieslistService: MoviesListService,
-    private http: HttpClient,
-    private findById: FindByIdService
+   
   ) {
-    this.movieslistService.getMovies().subscribe(
-      (data) => {
-        this.array[0].title = 'Trending Now';
-        this.array[0].array = data;
-      },
-      (error) => {
-        (this.showError = true), (this.error = error);
-      }
-    );
+    this.movieslistService
+      .getMovies()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next: (data) => {
+          this.array[0].title = 'Trending Now';
+          this.array[0].array = data;
+        },
+        error: (error: string) => {
+          (this.showError = true), (this.error = error);
+        },
+      });
 
-    this.movieslistService.getSeries().subscribe(
-      (data) => {
-        let obj = { title: 'Top Rated On Fakeflix', array: data };
-        this.array.push(obj);
-      },
-      (error) => {
-        (this.showError = true), (this.error = error);
-      }
-    );
+    this.movieslistService
+      .getSeries()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next:(data) => {
+          let obj = { title: 'Top Rated On Fakeflix', array: data };
+          this.array.push(obj);
+        },
+        error:(error) => {
+          (this.showError = true), (this.error = error);
+        }
+      });
 
-    this.movieslistService.getTvseries().subscribe(
-      (data) => {
-        let obj = { title: 'Tv Series Airing Today', array: data };
-        this.array.push(obj);
-      },
-      (error) => {
-        (this.showError = true), (this.error = error);
-      }
-    );
+    this.movieslistService
+      .getTvseries()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next:(data) => {
+          let obj = { title: 'Tv Series Airing Today', array: data };
+          this.array.push(obj);
+        },
+        error:(error) => {
+          (this.showError = true), (this.error = error);
+        }
+      });
 
-    // this.movieslistService.getTopRate().pipe(
-    //   takeUntil(this._destroy$)
-    // ).subscribe({
-    //   next: ,
-    //   error: 
-    // })
+   
+    this.movieslistService
+      .getTopRate()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+       next: (data) => {
+          let obj = { title: 'IMDb Top Rated Movies', array: data };
+          this.array.push(obj);
+        },
+       error: (error) => {
+          (this.showError = true), (this.error = error);
+        }
+      });
 
-    this.movieslistService.getTopRate().subscribe(
-      (data) => {
-        let obj = { title: 'IMDb Top Rated Movies', array: data };
-        this.array.push(obj);
-      },
-      (error) => {
-        (this.showError = true), (this.error = error);
-      }
-    );
-
-    this.movieslistService.getUpcoming().subscribe(
-      (data) => {
-        let obj = { title: 'Upcoming Movies', array: data };
-        this.array.push(obj);
-      },
-      (error) => {
-        (this.showError = true), (this.error = error);
-      }
-    );
+    this.movieslistService
+      .getUpcoming()
+      .pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next:(data) => {
+          let obj = { title: 'Upcoming Movies', array: data };
+          this.array.push(obj);
+        },
+        error:(error) => {
+          (this.showError = true), (this.error = error);
+        }
+      });
   }
 
-  hideCard(){
-    this.showCard=false
+  hideCard(hidde: boolean) {
+    this.showCard = hidde;
   }
+
   showDescription(ID: { id: number; index: number }) {
-    this.showCard=true
-    this.showElement= this.array[ID.index].array.find(
+    this.showCard = true;
+    this.showElement = this.array[ID.index].array.find(
       (element) => element.id == ID.id
     );
-    
   }
 
   ngOnDestroy(): void {
-      this._destroy$.next(true);
-      this._destroy$.complete();
-      this._destroy$.unsubscribe();
+    this._destroy$.next(true);
+    this._destroy$.complete();
+    this._destroy$.unsubscribe();
   }
-  
-  // @HostListener('window:resize', ['$event'])
-  // ngOnInit(): void {}
+
+
 }

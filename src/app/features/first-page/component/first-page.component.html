@@ -33,7 +33,7 @@
               formControlName="email"
             />
           </div>
-          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': SignInForm.get('password')?.invalid && SignInForm.get('password')?.touched && SignInForm.get('password')?.value.trim() !== ''}">
+          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': passwordCtrl.invalid && passwordCtrl.touched && passwordCtrl.value && passwordCtrl.value.trim() !== ''}">
             <input
               type="password"
               name="password"
@@ -113,7 +113,7 @@ c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.
           class="sign-in-up"
           [@fadeIn]
         >
-          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': SignUpForm.get('name')?.invalid && SignUpForm.get('name')?.touched && SignUpForm.get('name')?.value.trim() !== ''}">
+          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': namedUpCtrl.invalid && namedUpCtrl.touched && namedUpCtrl.value && namedUpCtrl.value.trim() !== ''}">
             <input
               type="text"
               name="yourname"
@@ -122,7 +122,7 @@ c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.
               formControlName="name"
             />
           </div>
-          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': SignUpForm.get('email')?.invalid && SignUpForm.get('email')?.touched && SignUpForm.get('email')?.value.trim() !== ''}">
+          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': emaildUpCtrl.invalid && emaildUpCtrl.touched && emaildUpCtrl.value && emaildUpCtrl.value.trim() !== ''}">
             <input
               type="text"
               name="email"
@@ -131,7 +131,7 @@ c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.
               formControlName="email"
             />
           </div>
-          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': SignUpForm.get('password')?.invalid && SignUpForm.get('password')?.touched && SignUpForm.get('password')?.value.trim() !== ''}">
+          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': passwordUpCtrl.invalid && passwordUpCtrl.touched && passwordUpCtrl.value && passwordUpCtrl.value.trim() !== ''}">
             <input
               type="password"
               name="password"
@@ -140,7 +140,7 @@ c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.
               formControlName="password"
             />
           </div>
-          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': SignUpForm.get('confirmPassword')?.invalid && SignUpForm.get('confirmPassword')?.touched && SignUpForm.get('confirmPassword')?.value.trim() !== ''}">
+          <div class="signin-input-wrapper fadeInAnimation" [ngClass]="{'invalid': confirmPasswordUpCtrl.invalid && confirmPasswordUpCtrl.touched && confirmPasswordUpCtrl.value && confirmPasswordUpCtrl.value.trim() !== ''}">
             <input
               type="password"
               name="repeat yout password"

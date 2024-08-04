@@ -1,0 +1,33 @@
+
+<div class="tv-series-container">
+  <div class="top-tv-series" [style.background-image]="backgroundImg">
+    <div class="card-wrapper">
+      <app-card [movie]="moviesList[4]" [tvHeader]="true" (ID)="handleBackgroun(4)"></app-card>
+      <app-card [movie]="moviesList[9]" [tvHeader]="true" (ID)="handleBackgroun(9)"></app-card>
+      <app-card [movie]="moviesList[12]" [tvHeader]="true" (ID)="handleBackgroun(12)"></app-card>
+    </div>
+    <div class="panel"></div>
+    <div class="panel-shadow"></div>
+  </div>
+  <div class="card-list">
+    <div class="title">{{text}}</div>
+    <div class="list" >
+      <ng-container *ngFor="let movie of list" >
+        <app-card
+        
+          [movie]="movie"
+          [tvStyle]="true"
+          (ID)="showDescription($event)"
+        ></app-card>
+      </ng-container>
+    </div>
+
+  </div>
+  <app-description
+  [showCard]="showCard"
+  [showElement]="showElement"
+  (closeCard)="hideCard($event)"
+></app-description>
+</div>
+
+

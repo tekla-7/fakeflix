@@ -59,7 +59,6 @@ export class NavBarComponent {
   showSignOut = false;
   constructor(
     private ElementRef: ElementRef,
-    private renderer: Renderer2,
     private authService: AuthService
   ) {}
   showMenu() {

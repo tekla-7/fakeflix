@@ -1,21 +1,78 @@
 @media screen and (max-width:767px) {
-    .card{
+    .cardItem {
         img {
             border-radius: 5px;
             width: 40vw;
-            
-           max-width: 250px;
+
+            max-width: 250px;
             height: 100%;
         }
+
         &:hover {
+            margin-right: 1rem;
+            margin-left: 1rem;
             transform: scale(1.1) !important;
         }
+
+    }
+    .card-info{
+        padding:0 .5em 1em; 
+    }
+    .heightClass {
+
+        height: 59.34vw;
+
+    }
+
+    .tvHeader {
+        z-index: 20;
+
+        img {
+            object-fit: cover;
+            border-radius: 5px;
+            width: 27vw;
+            // width: 23.01vw;
+            // min-width: 228.25px;
+          
+            height: 100%;
+
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    .tvStyle{
+        z-index: 20;
+
+        img {
+            object-fit: cover;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    .card-info-iconswrapper {
+       
+        .card-info-icon {
+         
+            font-size: 12px;
+            margin: 0 2px 0.2em;
+            padding: 4px;
+          
+           
+           
+        }
+
     
     }
-    .heightClass{
-           
-            height: 59.34vw;
-            
-        }
-}
 
+    .card-info-title {
+        font-size: 12px;
+       
+        font-weight: 500;
+    }
+}
